@@ -223,6 +223,8 @@ const ledgerSlice = createSlice({
         builder.addCase(refreshAccountOwner.fulfilled, (state, { payload }) => {
             set(state, ['hasLedger'], payload.ledger.hasLedger);
             set(state, ['ledgerKey'], payload.ledger.ledgerKey);
+            set(state, ['hasKeystone'], payload.keystone.hasKeystone);
+            set(state, ['keystoneKey'], payload.keystone.keystoneKey);
         });
         builder.addCase(handleConnectLedger.rejected, (state) => {
             set(state, ['connection', 'available'], false);

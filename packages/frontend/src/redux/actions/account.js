@@ -246,6 +246,7 @@ export const {
     checkCanEnableTwoFactor,
     get2faMethod,
     getLedgerKey,
+    getKeystoneKey,
     getLedgerPublicKey,
     setupRecoveryMessage,
     deleteRecoveryMethod,
@@ -324,8 +325,16 @@ export const {
         wallet.getLedgerKey.bind(wallet),
         () => ({})
     ],
+    GET_KEYSTONE_KEY: [
+        wallet.getKeystoneKey.bind(wallet),
+        () =>({})
+    ],
     GET_LEDGER_PUBLIC_KEY: [
         wallet.getLedgerPublicKey.bind(wallet),
+        () => ({})
+    ],
+    GET_KEYSTONE_PUBLIC_KEY: [
+        wallet.getKeystonePublicKey.bind(wallet),
         () => ({})
     ],
     SETUP_RECOVERY_MESSAGE: [

@@ -44,7 +44,7 @@ const RecoveryContainer = ({ type, recoveryMethods }) => {
     const activeMethods = userRecoveryMethods.filter(({ kind }) => allKinds.includes(kind));
     const currentActiveKinds = new Set(activeMethods.map((method) => method.kind));
     const missingKinds = allKinds.filter((kind) => !currentActiveKinds.has(kind));
-    const deleteAllowed = [...currentActiveKinds].length > 1 || account.ledgerKey;
+    const deleteAllowed = [...currentActiveKinds].length > 1 || account.ledgerKey || account.keystoneKey;
     missingKinds.forEach((kind) => activeMethods.push({ kind: kind }));
     const loadingStatus = useSelector((state) => selectRecoveryMethodsStatus(state, { accountId: account.accountId }));
 

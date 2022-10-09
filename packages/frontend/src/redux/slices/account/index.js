@@ -24,6 +24,8 @@ export const selectAccountFullAccessKeys = createSelector(selectAccountSlice, (a
 
 export const selectAccountLedgerKey = createSelector(selectAccountSlice, (account) => account.ledgerKey);
 
+export const selectAccountKeystoneKey = createSelector(selectAccountSlice, (account) => account.keystoneKey);
+
 export const selectAccountGlobalAlertPreventClear = createSelector(selectAccountSlice, (account) => account.globalAlertPreventClear);
 
 export const selectAccountMultisigRequest = createSelector(selectAccountSlice, (account) => account.multisigRequest);

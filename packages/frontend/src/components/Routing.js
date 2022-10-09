@@ -66,8 +66,10 @@ import { CreateAccountWithRouter } from './accounts/CreateAccount';
 import LedgerConfirmActionModal from './accounts/ledger/LedgerConfirmActionModal';
 import LedgerConnectModal from './accounts/ledger/LedgerConnectModal/LedgerConnectModalWrapper';
 import { SetupLedgerWithRouter } from './accounts/ledger/SetupLedger';
+import {setupKeystoneWithRouter} from './accounts/keystone/SetupKeystone';
 import { SetupLedgerSuccessWithRouter } from './accounts/ledger/SetupLedgerSuccess';
 import { SignInLedgerWrapper } from './accounts/ledger/SignInLedgerWrapper';
+import {SignInKeystoneWrapper} from "./accounts/keystone/SignInKeystoneWrapper";
 import { LinkdropLandingWithRouter } from './accounts/LinkdropLanding';
 import { RecoverAccountSeedPhraseWithRouter } from './accounts/RecoverAccountSeedPhrase';
 import { RecoverAccountWrapper } from './accounts/RecoverAccountWrapper';
@@ -510,6 +512,11 @@ class Routing extends Component {
                                 path="/setup-ledger/:accountId"
                                 component={SetupLedgerWithRouter}
                             />
+                            <Route
+                                exact
+                                path="/setup-keystone/:accountId"
+                                component={SetupKeystoneWithRouter}
+                            />
                             <PrivateRoute
                                 exact
                                 path="/setup-ledger-success"
@@ -601,6 +608,11 @@ class Routing extends Component {
                                 exact
                                 path="/sign-in-ledger"
                                 component={SignInLedgerWrapper}
+                            />
+                            <Route
+                                exact
+                                path="/sign-in-keystone"
+                                component={SignInKeystoneWrapper}
                             />
                             <PrivateRoute
                                 path="/login"

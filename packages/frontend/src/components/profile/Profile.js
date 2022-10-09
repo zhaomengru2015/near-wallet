@@ -10,6 +10,7 @@ import { useAccount } from '../../hooks/allAccounts';
 import { Mixpanel } from '../../mixpanel/index';
 import {
     getLedgerKey,
+    getKeystoneKey,
     checkCanEnableTwoFactor,
     redirectTo,
     refreshAccount,
@@ -24,6 +25,7 @@ import {
     selectAccountHasLockup,
     selectAccountId,
     selectAccountLedgerKey,
+    selectAccountKeystoneKey,
     selectAccountExists,
     selectAccountSlice,
     selectAccountFullAccessKeys
@@ -150,6 +152,7 @@ export function Profile({ match }) {
     const has2fa = useSelector(selectAccountHas2fa);
     const authorizedApps = useSelector(selectAccountAuthorizedApps);
     const ledgerKey = useSelector(selectAccountLedgerKey);
+    const keystoneKey = useSelector(selectAccountKeystoneKey);
     const loginAccountId = useSelector(selectAccountId);
     const nearTokenFiatValueUSD = useSelector(selectNearTokenFiatValueUSD);
     const accountIdFromUrl = match.params.accountId;
@@ -172,6 +175,7 @@ export function Profile({ match }) {
     const hasLedger = userRecoveryMethods.some((method) => method.kind === 'ledger');
 
     const ledgerIsConnected = useSelector(selectAccountLedgerKey);
+    const keystoneIsConnected = useSelector(selectAccountKeystoneKey);
     const hasLedgerButNotConnected = hasLedger && !ledgerIsConnected;
 
     useEffect(() => {
@@ -188,6 +192,9 @@ export function Profile({ match }) {
                 await dispatch(fetchRecoveryMethods({ accountId }));
                 if (!ledgerKey) {
                     dispatch(getLedgerKey());
+                }
+                if (!keystoneKey) {
+                    dispatch(getKeystoneKey());
                 }
                 const balance = await dispatch(getBalance());
                 dispatch(checkCanEnableTwoFactor(balance));
@@ -342,7 +349,7 @@ export function Profile({ match }) {
                             {secretKey ? <ExportKeyWrapper secretKey={secretKey} /> : null}
                             <RemoveAccountWrapper />
                         </>
-                        {!IS_MAINNET && !account.ledgerKey && !isMobile() &&
+                        {!IS_MAINNET && !account.ledgerKey && !account.keystoneKey && !isMobile() &&
                             <MobileSharingWrapper />
                         }
                     </div>

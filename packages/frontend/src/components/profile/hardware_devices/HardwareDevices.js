@@ -9,6 +9,7 @@ import {
     getAccessKeys,
     disableLedger,
     getLedgerKey,
+    getKeystoneKey,
     addLedgerAccessKey
 } from '../../../redux/actions/account';
 import { actions as recoveryMethodsActions, selectRecoveryMethodsStatus } from '../../../redux/slices/recoveryMethods';
@@ -86,6 +87,7 @@ const HardwareDevices = ({
             async () => {
                 await dispatch(getAccessKeys());
                 await dispatch(getLedgerKey());
+                await dispatch(getKeystoneKey());
                 await dispatch(fetchRecoveryMethods({ accountId: account.accountId }));
                 setDisabling(false);
                 setConfirmDisable(false);
@@ -98,6 +100,7 @@ const HardwareDevices = ({
             async () => {
                 await dispatch(addLedgerAccessKey());
                 await dispatch(getLedgerKey());
+                await dispatch(getKeystoneKey());
                 await dispatch(fetchRecoveryMethods({ accountId: account.accountId }));
             }
         );

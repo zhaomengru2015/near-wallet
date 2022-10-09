@@ -9,6 +9,7 @@ import {
     checkCanEnableTwoFactor,
     get2faMethod,
     getLedgerKey,
+    getKeystoneKey,
     getBalance,
     makeAccountActive,
     setLocalStorage,
@@ -30,6 +31,7 @@ const initialState = {
     canEnableTwoFactor: null,
     twoFactor: null,
     ledgerKey: null,
+    keystoneKey: null,
     accountsBalance: undefined,
     multisigRequest: null,
 };
@@ -87,6 +89,13 @@ const ledgerKey = handleActions({
     [getLedgerKey]: (state, { payload }) => ({
         ...state,
         ledgerKey: payload
+    })
+}, initialState);
+
+const keystoneKey = handleActions({
+    [getKeystoneKey]: (state, { payload }) => ({
+        ...state,
+        keystoneKey: payload
     })
 }, initialState);
 
@@ -220,5 +229,6 @@ export default reduceReducers(
     twoFactor,
     twoFactorPrompt,
     ledgerKey,
+    keystoneKey,
     multisigRequest,
 );

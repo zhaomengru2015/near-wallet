@@ -152,6 +152,18 @@ const RecoverAccount = ({
                             <Translate id='button.signInLedger' />
                         </FormButton>
                     </Option>
+                    <Option>
+                        <Header icon={HardwareDeviceIcon}><Translate id='recoverAccount.keystone.title' /></Header>
+                        <P><Translate id='recoverAccount.keystone.desc' /></P>
+                        <FormButton
+                            color='seafoam-blue'
+                            linkTo={`/sign-in-keystone${locationSearch}`}
+                            onClick={() => Mixpanel.track('IE Click keystone recovery button')}
+                            id='IE Click keystone recovery button'
+                        >
+                            <Translate id='button.signInKeystone' />
+                        </FormButton>
+                    </Option>
                     {!IS_MAINNET && isMobile && (
                         <Option>
                             <Header className='no-background'><SmartPhoneIcon /><Translate id='mobileDeviceAccess.title' /></Header>

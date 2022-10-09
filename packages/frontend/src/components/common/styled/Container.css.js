@@ -79,6 +79,38 @@ const Container = styled.div`
         color: #72727A;
         font-weight: 400;
     }
+    
+    &.keystone-theme {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center;
+        .logo {
+            width: 205px;
+            height: 48px;
+        }
+        .scan {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .camera {
+            width: 45px;
+            height: 45px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .note {
+            margin-top: 24px;
+            font-size: 14px;
+            font-family: Inter-Regular, Inter;
+            font-weight: 400;
+            line-height: 20px;
+            color: #A7A7A7;
+        }
+    }
 
     &.ledger-theme {
         text-align: center;
